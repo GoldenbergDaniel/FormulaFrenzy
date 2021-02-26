@@ -22,13 +22,16 @@ def generateFunc(maxTerms):
     arithmetic = ["+", "-", "*", "/", "^"]
     function = []
   
-  
-    for i in range(r.randint(2,maxTerms)):
-        function.append(arithmetic[r.randint(0,4)])
+    forRange = r.randint(2,maxTerms)
+    for i in range(forRange):
+        
         if i % 2 != 0:
             function.append(r.randint(1,10))
         else:
             function.append("x")
+        if i != forRange - 1:
+            function.append(arithmetic[r.randint(0,4)])
+        
     
     return function
 
