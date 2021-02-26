@@ -1,1 +1,72 @@
-#
+import random as r
+
+inputsGlobal = [0]
+functionGlobal = ""
+functionGlobal_display = ""
+outputsGlobal = []
+
+def initInputArr():
+    forRange = 3
+    for i in range(forRange):
+        rand = r.randint(1, 10)
+        if (rand in inputsGlobal) == False:
+            inputsGlobal.append(rand)
+        else:
+            forRange+=1
+
+initInputArr()
+print("Random input list: ", inputsGlobal)
+
+
+def generateFunc(maxTerms):
+    arithmetic = ["+", "-", "*", "/", "^"]
+    function = []
+  
+  
+    for i in range(r.randint(2,maxTerms)):
+        function.append(arithmetic[r.randint(0,4)])
+        if i % 2 != 0:
+            function.append(r.randint(1,10))
+        else:
+            function.append("x")
+    
+    return function
+
+
+functionGlobal = generateFunc(4)
+
+functionGlobal_display = ''.join(map(str, functionGlobal))
+""""x" +"""
+
+print("Function: ", functionGlobal_display)
+
+
+
+def generateOutput(inputArr, functionArr):
+    outputArr = []
+    #To-do
+    return outputArr
+
+outputG = generateOutput(inputsGlobal, functionGlobal)
+print("Solved: ", outputsGlobal)
+
+def checkFunc(inputfunction):
+    if inputfunction == ''.join(map(str, functionGlobal)):
+        return True
+    else:
+        return False
+
+
+def withParentheses(functionArr):
+    withParentheses = []
+    for i in range(len(functionArr)):
+        withParentheses.append("(")
+
+    for i in range(len(functionArr)):
+        #if i % 2 == 0:
+        withParentheses.append(str(functionArr[i-1]) + ")")
+    return withParentheses
+        
+print("With Parentheses: ", ''.join(map(str, withParentheses(functionGlobal))))
+
+
