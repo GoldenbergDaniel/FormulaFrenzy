@@ -12,7 +12,7 @@ def initInputArr():
         if (rand in inputsGlobal) == False:
             inputsGlobal.append(rand)
         else:
-            forRange+=1
+            forRange += 1
 
 initInputArr()
 print("Random input list: ", inputsGlobal)
@@ -46,18 +46,53 @@ print("Function: ", functionGlobal_display)
 
 
 def generateOutput(inputArr, functionArr):
-    outputArr = []
-    #To-do
-    return outputArr
+  outputArr = []
+  
+ 
+  for j in range(len(inputArr)):
+   x = inputArr[j]
+   xInit = x
+       
+   for i in range(len(functionArr)-1):
+    if functionArr[i] == "+":
+        if functionArr[i+1] == "x":
+            x = x + xInit
+        else:
+            x = x + functionArr[i+1]
+      
+    if functionArr[i] == "-":
+        if functionArr[i+1] == "x":
+            x = x - xInit
+        else:
+            x = x - functionArr[i+1]
+      
+    if functionArr[i] == "*":
+        if functionArr[i+1] == "x":
+            x = x * xInit
+        else:
+            x = x * functionArr[i+1]
+      
+    if functionArr[i] == "/":
+        if functionArr[i+1] == "x":
+            x = x / xInit
+        else:
+            x = x / functionArr[i+1]
+    
+    if functionArr[i] == "^":
+        if functionArr[i+1] == "x":
+            x = x ** xInit
+        else:
+            x = x ** functionArr[i+1]
+        
+   outputArr.append(x)      
+    
+  return outputArr
 
-outputG = generateOutput(inputsGlobal, functionGlobal)
+outputsGlobal = generateOutput(inputsGlobal, functionGlobal)
 print("Solved: ", outputsGlobal)
 
-def checkFunc(inputfunction):
-    if inputfunction == ''.join(map(str, functionGlobal)):
-        return True
-    else:
-        return False
+
+    
 
 
 def withParentheses(functionArr):
