@@ -14,8 +14,8 @@ def initInputArr():
         else:
             forRange += 1
 
-initInputArr()
-print("Random input list: ", inputsGlobal)
+# initInputArr()
+# print("Random input list: ", inputsGlobal)
 
 
 def generateFunc(maxTerms):
@@ -38,10 +38,8 @@ def generateFunc(maxTerms):
 
 functionGlobal = generateFunc(4)
 
-functionGlobal_display = ''.join(map(str, functionGlobal))
-""""x" +"""
-
-print("Function: ", functionGlobal_display)
+# functionGlobal_display = ''.join(map(str, functionGlobal))
+# print("Function: ", functionGlobal_display)
 
 
 
@@ -94,41 +92,68 @@ def generateOutput(inputArr, functionArr):
     
   return outputArr
 
-outputsGlobal = generateOutput(inputsGlobal, functionGlobal)
-print("Solved: ", outputsGlobal)
+# outputsGlobal = generateOutput(inputsGlobal, functionGlobal)
+# print("Solved: ", outputsGlobal)
 
 
-def checkFuncStatic(inputfunction):
-    if inputfunction == ''.join(map(str, functionGlobal)):
+
+def withParentheses(functionArr):
+    withParentheses = []
+    forRange =  len(functionArr)/2 - 1
+    for i in range(int(forRange)):
+        withParentheses.append("(")
+
+    for i in range(len(functionArr)):
+        if i % 2 == 0 and (i != len(functionArr)-1) and (i != 0):
+            withParentheses.append(str(functionArr[i]) + ")")
+        else:
+            withParentheses.append(str(functionArr[i]))
+    return withParentheses
+
+
+
+def checkFuncStatic(inputFunction, realFunction):
+    realFunction = ''.join(map(str, realFunction))
+    realFunctionParentheses = ''.join(map(str, withParentheses(realFunction)))
+
+    #print(inputFunction, withParentheses(realFunction))
+    if inputFunction == realFunction or inputFunction == realFunctionParentheses:
         return True
     else:
         return False
 
-def checkFuncDynamic(inputfunction):
-    user = generateOutput(inputsGlobal, inputfunction)
-    real = generateOutput(inputsGlobal, functionGlobal)
+
+
+#Does not Work
+
+def checkFuncDynamic(inputFunction, realFunction, inputs):
+    inputFunctionList = []
+    for i in range(len(inputFunction)):
+        if ord(inputFunction[i]) >= 48 and ord(inputFunction[i]) <= 57:
+            inputFunctionList.append(int(inputFunction[i]))
+        else:
+            inputFunctionList.append(str(inputFunction[i]))
+    print(inputFunctionList)
+        
+
+    
+    real = generateOutput(inputs, realFunction)
+    #print("real: ", real)
+    user = generateOutput(inputs, inputFunctionList)
+    #print("user: ", user)
+    print(realFunction)
 
     if user == real:
         return True
     else:
         return False
 
-
-
-def withParentheses(functionArr):
-    withParentheses = []
-    forRange =  len(functionArr)/2 + 1
-    for i in range(int(forRange)):
-        withParentheses.append("(")
-
-    for i in range(len(functionArr)):
-        if i % 2 == 0:
-            withParentheses.append(str(functionArr[i]) + ")")
-        else:
-            withParentheses.append(str(functionArr[i]))
-    return withParentheses
-
-print("With Parentheses: ", ''.join(map(str, withParentheses(functionGlobal))))
+#Wont work until checkFuncSynamic works
+def universalCheck(inputFunction, realFunction, inputs):
+    if checkFuncDynamic(inputFunction, realFunction, inputs) == True or checkFuncStatic(inputFunction, realFunction) == True:
+        return True
+    else:
+        return False
 
 
 
