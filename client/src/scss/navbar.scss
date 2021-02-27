@@ -1,3 +1,20 @@
+@import "globals";
 #navbar {
+  nav {
+  background-color: $accent-color;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  // a {
+  //   color: $primary-background-color;
+  // }
+}
 
+.nav-item {
+  color: $primary-background-color;
+  padding: 15px;
+}
 }
