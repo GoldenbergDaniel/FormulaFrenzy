@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO, send, emit
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "abcde"
@@ -9,18 +9,10 @@ users = []
 messages = []
 functions = []
 
-
-@socketio.on("message")
-def handle_message(msg):
-    if msg == "clear":
-        messages.clear()
-    else:
-        messages.append(msg)
-        send(msg, broadcast=True)
-
 @socketio.on("function")
-def handle_function(func):
-    functions.append(func)
+def handle_function(string):
+    functions.append(string)
+    emit(string, broadcast=True)
 
 
 @socketio.on("username", namespace="/private")
