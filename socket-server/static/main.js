@@ -1,7 +1,11 @@
 var socket = io.connect("http://127.0.0.1:5000/")
 
 socket.on("connect", () => {
-  socket.send("Player has connected!")
+  var data = {
+    username: "Bob",
+    room: socket.sessionId
+  };
+  socket.emit("join",data)
 })
 
 socket.on("function",(func) => {
