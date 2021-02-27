@@ -19,7 +19,7 @@ print("Random input list: ", inputsGlobal)
 
 
 def generateFunc(maxTerms):
-    arithmetic = ("+", "-", "*", "/", "^")
+    arithmetic = ("+", "-", "*", "^")
     function = []
   
     forRange = r.randint(2,maxTerms)
@@ -30,7 +30,7 @@ def generateFunc(maxTerms):
         else:
             function.append("x")
         if i != forRange - 1:
-            function.append(arithmetic[r.randint(0,4)])
+            function.append(arithmetic[r.randint(0,len(arithmetic)-1)])
         
     
     return function
