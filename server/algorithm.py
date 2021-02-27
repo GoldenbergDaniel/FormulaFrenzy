@@ -50,7 +50,7 @@ def generateOutput(inputArr, functionArr):
   
  
   for j in range(len(inputArr)):
-   x = inputArr[j]
+   x = int(inputArr[j])
    xInit = x
        
    for i in range(len(functionArr)-1):
@@ -68,7 +68,7 @@ def generateOutput(inputArr, functionArr):
       
     if functionArr[i] == "*":
         if functionArr[i+1] == "x":
-            x = x * xInit
+            x = int(x) * int(xInit)
         else:
             x = x * functionArr[i+1]
       
@@ -90,7 +90,7 @@ def generateOutput(inputArr, functionArr):
         else:
             x = x ** functionArr[i+1]
         
-   outputArr.append(x)      
+   outputArr.append(round(x, 2))      
     
   return outputArr
 
