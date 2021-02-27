@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
 import sys
-sys.path.append("../algorithm-server")
+sys.path.append("../algorithm")
 from algorithm import *
 
 ###########################
