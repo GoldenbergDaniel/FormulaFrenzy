@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
-import sys
-sys.path.append("../algorithm")
-from algorithm import *
+from algorithm.algorithm import *
 
 ###########################
 
@@ -38,11 +36,13 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 functions = []
 
+
 @socketio.on("function")
-def handle_function(string):
-    functions.append(string)
-    emit("function", string, broadcast=True)
+def handle_function(func):
+    functions.append(func)
     print(functions)
+    output = generateOutput([1,2,3,4,5], str(func))
+    emit("function", output, broadcast=True)
     return render_template("index.html", funcs=functions)
 
 @socketio.on("join")
