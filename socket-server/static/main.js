@@ -26,3 +26,12 @@ sendBtn.addEventListener("click", () => {
   socket.send(messageField.value)
   messageField.value = ""
 })
+
+var funcBtn = document.getElementById("send-function-btn")
+funcBtn.addEventListener("click",() => {
+  var funcField = document.getElementById("function-field")
+  var funcList = document.getElementById("function-list")
+
+  socket.send(funcField.value)
+  funcField.value = ""
+})

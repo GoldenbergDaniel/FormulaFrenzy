@@ -7,6 +7,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 users = []
 messages = []
+functions = []
 
 
 @socketio.on("message")
@@ -16,6 +17,10 @@ def handle_message(msg):
     else:
         messages.append(msg)
         send(msg, broadcast=True)
+
+@socketio.on("function")
+def handle_function(func):
+    functions.append(func)
 
 
 @socketio.on("username", namespace="/private")
