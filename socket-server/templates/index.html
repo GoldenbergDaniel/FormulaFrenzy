@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+  <title>Chat App</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <div id="message-list">
+    {% for msg in messages %}
+      <p>{{ msg }}</p>
+    {% endfor %}
+  </div>
+
+  <input type="text" placeholder="Username" id="username-field">
+  <button id="submit-username-btn">Submit</button>
+  <br>
+  <input type="text" placeholder="Message" id="message-field">
+  <button id="send-message-btn">Send</button>
+</body>
+<script src="../static/main.js"></script>
+</html>
+ 
