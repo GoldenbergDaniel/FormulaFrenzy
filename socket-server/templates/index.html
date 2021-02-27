@@ -4,31 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.2/socket.io.js"></script>
-  <title>Chat App</title>
+  <title>Prototype</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-
-  <div id="message-list">
-    {% for msg in messages %}
-      <p>{{ msg }}</p>
-    {% endfor %}
-  </div>
-
   <div id="function-list">
-    {% for func in functions %}
+    {% for func in funcs %}
       <p>{{ func }}</p>
     {% endfor %}
   </div>
-
-  <input type="text" placeholder="Username" id="username-field">
-  <button id="submit-username-btn">Submit</button>
-  <br>
-  <input type="text" placeholder="Message" id="message-field">
-  <button id="send-message-btn">Send</button>
-  <br>
   <input type="text" placeholder="Function" id="function-field">
   <button id="send-function-btn">Send</button>
 </body>

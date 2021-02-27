@@ -14,17 +14,18 @@ def handle_function(string):
     functions.append(string)
     emit(string, broadcast=True)
     print(functions)
+    return render_template("index.html", funcs=functions)
 
 
-@socketio.on("username", namespace="/private")
-def revieve_username(username):
-    users.append({username: request.sid})
-    print(users)
+# @socketio.on("username", namespace="/private")
+# def revieve_username(username):
+#     users.append({username: request.sid})
+#     print(users)
 
 
 @app.route("/")
 def index():
-    return render_template("index.html", messages=messages)
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

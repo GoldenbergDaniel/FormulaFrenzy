@@ -6,17 +6,22 @@ var endPoint = "http://localhost:5000"
 var socket = io.connect(`${endPoint}`)
 
 var App = () => {
-  var [messages, setMessages] = useState([
-    "Hello and welcome!"
-  ])
-
-  var [messages, setMessages] = useState(["Hello and welcome!"])
-  var [message, setMessage] = useState("")
+  var [funcs, setFuncs] = useState(["2x"])
+  var [func, setFunc] = useState("")
 
   useEffect(() => {
-    getMessages()
-    [message.length]
-  })
+    getFuncs()
+  }, [funcs.length])
+
+  var getFuncs = () => {
+    socket.on("function", func => {
+      setFuncs([...funcs, func])
+    })
+  }
+
+  var onChange = e => {
+    setFunc(e.target.value)
+  }
 
   return (
     <div className="App">
