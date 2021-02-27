@@ -19,7 +19,7 @@ print("Random input list: ", inputsGlobal)
 
 
 def generateFunc(maxTerms):
-    arithmetic = ["+", "-", "*", "/", "^"]
+    arithmetic = ("+", "-", "*", "/", "^")
     function = []
   
     forRange = r.randint(2,maxTerms)
@@ -74,9 +74,15 @@ def generateOutput(inputArr, functionArr):
       
     if functionArr[i] == "/":
         if functionArr[i+1] == "x":
-            x = x / xInit
+            if xInit != 0:
+                x = x / xInit
+            else:
+                x = x / 1
         else:
-            x = x / functionArr[i+1]
+            if functionArr[i+1] != 0:
+                x = x / functionArr[i+1]
+            else:
+                x = x / 1
     
     if functionArr[i] == "^":
         if functionArr[i+1] == "x":
@@ -92,19 +98,43 @@ outputsGlobal = generateOutput(inputsGlobal, functionGlobal)
 print("Solved: ", outputsGlobal)
 
 
-    
+def checkFuncStatic(inputfunction):
+    if inputfunction == ''.join(map(str, functionGlobal)):
+        return True
+    else:
+        return False
+
+def checkFuncDynamic(inputfunction):
+    user = generateOutput(inputsGlobal, inputfunction)
+    real = generateOutput(inputsGlobal, functionGlobal)
+
+    if user == real:
+        return True
+    else:
+        return False
+
 
 
 def withParentheses(functionArr):
     withParentheses = []
-    for i in range(len(functionArr)):
+    forRange =  len(functionArr)/2 + 1
+    for i in range(int(forRange)):
         withParentheses.append("(")
 
     for i in range(len(functionArr)):
-        #if i % 2 == 0:
-        withParentheses.append(str(functionArr[i-1]) + ")")
+        if i % 2 == 0:
+            withParentheses.append(str(functionArr[i]) + ")")
+        else:
+            withParentheses.append(str(functionArr[i]))
     return withParentheses
-        
+
 print("With Parentheses: ", ''.join(map(str, withParentheses(functionGlobal))))
+
+
+
+
+
+
+
 
 
