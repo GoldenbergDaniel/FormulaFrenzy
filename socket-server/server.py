@@ -6,13 +6,13 @@ app.config["SECRET_KEY"] = "abcde"
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 users = []
-messages = []
 functions = []
+
 
 @socketio.on("function")
 def handle_function(string):
     functions.append(string)
-    emit(string, broadcast=True)
+    emit("function", string, broadcast=True)
     print(functions)
     return render_template("index.html", funcs=functions)
 
