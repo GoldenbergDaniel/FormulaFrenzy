@@ -23,9 +23,21 @@ var App = () => {
     setFunc(e.target.value)
   }
 
+  var onClick = () => {
+    if (func!=""){
+      if (func.includes("x") && (func.includes("+") || func.includes("-") || func.includes("*") || func.includes("^"))){
+        socket.emit("function",func)
+      } else {
+        alert("Invalid Function!")
+      }
+    } else {
+      alert("Please enter a Function")
+    }
+  }
+
   return (
     <div className="App">
-      
+      <button onClick={() => onClick()}>Send Function</button>
     </div>
   )
 }
