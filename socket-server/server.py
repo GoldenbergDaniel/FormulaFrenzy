@@ -13,6 +13,7 @@ functions = []
 def handle_function(string):
     functions.append(string)
     emit(string, broadcast=True)
+    print(functions)
 
 
 @socketio.on("username", namespace="/private")
