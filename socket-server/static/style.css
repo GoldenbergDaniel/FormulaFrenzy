@@ -1,0 +1,40 @@
+* {
+  color: rgb(240, 240, 240);
+  background-color: rgb(40, 40, 40);
+  font-family: "Roboto", sans-serif;
+  margin: 3px;
+  font-size: 16px;
+}
+
+input, button {
+  color:  rgb(240, 240, 240);
+  background-color: rgb(60, 60, 60);
+  border: none;
+  padding: 5px;
+}
+
+input:first-of-type, button:first-of-type {
+  margin-top: 10px;
+}
+
+input:enabled {
+  outline: none;
+}
+
+button:enabled {
+  outline: none;
+}
+
+button:hover {
+  background-color: rgb(80, 80, 80);
+  cursor: pointer;
+}
+
+p {
+  background-color: rgb(60, 60, 60);
+  padding: 5px;
+}
+
+#message-list p {
+  margin: 5px 0;
+}
