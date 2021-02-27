@@ -7,9 +7,11 @@ var Navbar = () => {
   return (
     <div id="navbar">
       <nav>
-        <div className="nav-item" id="nav-title">
-          <h1><span className="orange">function </span><span className="white">(</span><span className="blue">frenzy</span><span className={"white"}>)</span></h1>
-        </div>
+        <a>
+          <div className="nav-item" id="nav-title">
+            <h1><span className="orange">function </span><span className="white">(</span><span className="blue">frenzy</span><span className={"white"}>)</span></h1>
+          </div>
+        </a>
         <div className="nav-item" id="nav-info">
           <h1 className="white">For Education!</h1>
         </div>
