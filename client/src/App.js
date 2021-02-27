@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react"
 import io from "socket-io"
-import './App.css'
+import "css./App.css"
 
 var endPoint = "http://localhost:5000"
 var socket = io.connect(`${endPoint}`)
@@ -36,7 +36,7 @@ var App = () => {
   }
 
   return (
-    <div className="App">
+    <div id="app">
       <button onClick={() => onClick()}>Send Function</button>
     </div>
   )
