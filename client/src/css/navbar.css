@@ -1,1 +1,24 @@
-/* No CSS */
+#navbar nav {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#navbar .nav-item {
+  padding: 15px;
+}
+
+#navbar #nav-title {
+  font-size: 1.5rem;
+}
+
+#navbar #nav-info {
+  margin-left: auto;
+  font-size: 0.75rem;
+}
