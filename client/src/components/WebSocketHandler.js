@@ -28,12 +28,6 @@ socket.on("message",(msg) => {
   console.log(msg)
 })
 
-socket.on("function",(func) => {
-  var functionList = document.getElementById("function-list")
-  var newFunction = document.createElement("p")
-  newFunction.append(func)
-  functionList.appendChild(newFunction)
-})
 
 socket.on("check", (isCorrect, func) => {
   if (isCorrect) {

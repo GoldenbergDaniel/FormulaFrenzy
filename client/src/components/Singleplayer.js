@@ -7,55 +7,24 @@ import Table from "./Table"
 var socket = io.connect("http://127.0.0.1:5000/")
 
 
-// import React, { Component } from "react";
-
-// class Singleplayer extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//     };
-//     this.onInputchange = this.onInputchange.bind(this);
-//     this.onSubmitForm = this.onSubmitForm.bind(this);
-//   }
-
-//   onInputchange(event) {
-//     this.setState({
-//       [event.target.name]: event.target.value
-//     });
-//   }
-
-//   onSubmitForm() {
-//     console.log(this.state)
-//   }
-
-//Don't delete
 
 var inputDisplay 
 var outputDisplay 
 
-/*
-socket.on("question",(dictonary) => {
-  inputDisplay = dictonary.inputs
-  outputDisplay = dictonary.outputs
-
-  window.alert(dictonary.inputs)
-  window.alert(dictonary.outputs)
-  window.alert(dictonary.function)
-  window.alert(dictonary.functionP)
-})
- */
-
-var inputFunc 
-
-function check() {
-  var inputBox = document.getElementById("id-field")
-  socket.emit("check", inputBox.value)
-}
-
-
 //GET RID OF THIS LATER!
 inputDisplay = [0, 2, 3, 4]
 outputDisplay = [6, 7, 5, 3]
+
+
+
+function check() {
+  var inputFunc = document.getElementById("id-field")
+  socket.emit("check", inputFunc.value)
+}
+
+
+
+
 
 // var userFunc = "x^2+3"
 
@@ -63,6 +32,7 @@ var Singleplayer = () => {
   // var [ items, setItems ] = useState();
 
   return (
+    <body onLoad={socket.emit("question")}>
     <div id="singleplayer">
       <div id="input-box">
         <Table inputDisplay={inputDisplay} outputDisplay={outputDisplay}/>
@@ -72,7 +42,11 @@ var Singleplayer = () => {
         }}>Check</button>
       </div>
     </div>
+    </body>
   )
 }
 
 export default Singleplayer
+
+
+
