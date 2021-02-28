@@ -1,5 +1,5 @@
 import React from "react"
-// import io from "socket.io-client"
+import io from "socket.io-client"
 import "./css/index.css"
 import "./css/App.css"
 
@@ -8,18 +8,17 @@ import MultiplayerSelect from "./components/MultiplayerSelect"
 import Singleplayer from "./components/Singleplayer"
 import Multiplayer from "./components/Multiplayer"
 import GamemodeSelect from "./components/GamemodeSelect"
+import WebSocketHandler from "./components/WebSocketHandler"
 
-// var endPoint = "http://localhost:5000"
-// var socket = io.connect(`${endPoint}`)
+var endPoint = "http://localhost:5000"
+var socket = io.connect(`${endPoint}`)
 
 class App extends React.Component {
   constructor() {
     super()
-    
     this.state = {
       window: "home"
     }
-
     this.homeClick = this.homeClick.bind(this)
     this.multiplayerClick = this.multiplayerClick.bind(this)
     this.multiplayerSelectClick = this.multiplayerSelectClick.bind(this)
@@ -55,6 +54,7 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
+          <WebSocketHandler socketHandler/>
           <GamemodeSelect singleplayer={this.singleplayerClick} multiplayer_select={this.multiplayerSelectClick}/>
         </div>
       )
@@ -63,7 +63,8 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
-          <MultiplayerSelect multiplayer={this.homeClick}/>
+          <WebSocketHandler socketHandler/>
+          <MultiplayerSelect multiplayer={this.multiplayerClick}/>
         </div>
       )
     }
@@ -71,6 +72,7 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
+          <WebSocketHandler socketHandler/>
           <Multiplayer/>
         </div>
       )
@@ -79,12 +81,14 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
+          <WebSocketHandler socketHandler/>
           <Singleplayer/>
         </div>
       )
     }
   }
 }
+
 
 // var [funcs, setFuncs] = useState(["2x"])
 // var [func, setFunc] = useState("")
