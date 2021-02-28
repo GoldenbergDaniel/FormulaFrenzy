@@ -50,6 +50,7 @@ def handle_connection():
 @socketio.on("question")
 def handle_question():
     functionGlobal = generateFunc(3)
+    print("Func G: ", functionGlobal)
     initInputArr()
     output = generateOutput(inputsGlobal, functionGlobal)
     response = {
@@ -66,6 +67,26 @@ def handle_question():
         "functionP", withParentheses(functionGlobal))
 
     emit("question", response)
+
+@socketio.on("makeTable")
+def make_table_given_function_for_multiplayer(func):
+    functionGlobal = list(func)
+    initInputArr()
+    output = generateOutput(inputsGlobal, func)
+    response = {
+        "inputs": inputsGlobal,
+        "outputs": output,
+        "function": ''.join(map(str, functionGlobal)),
+        "functionP": withParentheses(functionGlobal)
+    }
+
+    
+    print("inputs", inputsGlobal,
+        "outputs", output,
+        "function", ''.join(map(str, functionGlobal)),
+        "functionP", withParentheses(functionGlobal))
+        
+    emit("makeTable", )
 
 @socketio.on("check")
 def check_user_function(func):
