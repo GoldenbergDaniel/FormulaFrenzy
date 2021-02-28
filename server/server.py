@@ -1,7 +1,14 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
-from algorithm.algorithm import *
+
+import sys
+sys.path.append("../algorithm")
+from algorithm import *
+
+#from algorithm.algorithm import *
+
+
 
 ###########################
 
@@ -52,6 +59,13 @@ def handle_question():
         "function": ''.join(map(str, functionGlobal)),
         "functionP": withParentheses(functionGlobal)
     }
+
+    
+    print("inputs", inputsGlobal,
+        "outputs", output,
+        "function", ''.join(map(str, functionGlobal)),
+        "functionP", withParentheses(functionGlobal))
+
     emit("question", response)
 
 @socketio.on("check")
