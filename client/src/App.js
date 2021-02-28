@@ -12,14 +12,46 @@ var endPoint = "http://localhost:5000"
 var socket = io.connect(`${endPoint}`)
 
 var App = () => {
-  return (
-    <div id="app">
-      <Navbar/>
-      {/* <MultiplayerSelect/>a */}
-      {/* <Singleplayer/> */}
-      <Multiplayer/>
-    </div>
-  )
+  var [window, setWindow] = useState("home")
+
+  if (window === "home") {
+    return (
+      <div id="app">
+        <Navbar/>
+      </div>
+    )
+  }
+  else if (window === "gamemode-select") {
+    return (
+      <div id="app">
+        <Navbar/>
+      </div>
+    )
+  }
+  else if (window === "multiplayer-select") {
+    return (
+      <div id="app">
+        <Navbar/>
+        <MultiplayerSelect/>
+      </div>
+    )
+  }
+  else if (window === "multiplayer") {
+    return (
+      <div id="app">
+        <Navbar/>
+        <Multiplayer/>
+      </div>
+    )
+  }
+  else if (window === "singleplayer") {
+    return (
+      <div id="app">
+        <Navbar/>
+        <Singleplayer/>
+      </div>
+    )
+  }
 }
 
 export default App
