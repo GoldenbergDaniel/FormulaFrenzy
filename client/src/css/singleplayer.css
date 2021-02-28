@@ -3,7 +3,7 @@
   top: 40%;
   left: 50%;
   margin-top: -50px;
-  margin-left: -175px;
+  margin-left: -200px;
 }
 
 #singleplayer #input-box input {
@@ -17,5 +17,36 @@
 }
 
 #singleplayer #input-box input:focus {
+  outline: none;
+}
+
+#singleplayer #input-box #btn-container {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 5px;
+}
+
+#singleplayer #input-box #btn-container button {
+  font-size: 34px;
+  color: #eaeaea;
+  border: none;
+  background-color: #363636;
+  padding: 5px;
+  border-radius: 0;
+}
+
+#singleplayer #input-box #btn-container :hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+#singleplayer #input-box #btn-container :active {
   outline: none;
 }

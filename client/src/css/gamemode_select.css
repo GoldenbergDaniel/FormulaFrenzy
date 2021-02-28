@@ -19,4 +19,5 @@
 
 #gamemode-select .child-container :hover {
   cursor: pointer;
+  opacity: 0.75;
 }

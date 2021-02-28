@@ -20,6 +20,7 @@
 
 #navbar #nav-title :hover {
   cursor: pointer;
+  opacity: 0.75;
 }
 
 #navbar #nav-info {

@@ -1,15 +1,13 @@
 #multiplayer-select {
-  background-color: #363636;
   position: absolute;
   top: 45%;
   left: 50%;
   margin-top: -50px;
-  margin-left: -260px;
-  padding: 5px;
+  margin-left: -200px;
 }
 
-#multiplayer-select #child-container {
-  font-size: 18px;
+#multiplayer-select #input-container {
+  background-color: #363636;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -19,16 +17,48 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 0 5px 0 5px;
 }
 
-#multiplayer-select #child-container input {
-  margin-left: 5px;
-  font-size: 34px;
+#multiplayer-select #input-container input {
+  font-size: 32px;
   background: none;
   border: none;
-  width: 40%;
+  width: 85px;
+  padding: 5px;
 }
 
-#multiplayer-select #child-container input:focus {
+#multiplayer-select #input-container input:focus {
+  outline: none;
+}
+
+#multiplayer-select #btn-container {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 5px;
+}
+
+#multiplayer-select #btn-container button {
+  font-size: 34px;
+  color: #eaeaea;
+  border: none;
+  background-color: #363636;
+  padding: 5px;
+  border-radius: 0;
+}
+
+#multiplayer-select #btn-container :hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+#multiplayer-select #btn-container :active {
   outline: none;
 }

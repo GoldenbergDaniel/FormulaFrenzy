@@ -16,14 +16,35 @@
       padding: 5px;
       text-align: center;
       background-color: $secondary-background;
-
-      :focus {
-        outline: none;
-      }
     }
 
     input:focus {
       outline: none;
+    }
+
+    #btn-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 5px;
+  
+      button {
+        font-size: 34px;
+        color: $white;
+        border: none;
+        background-color: $secondary-background;
+        padding: 5px;
+        border-radius: 0;
+      }
+  
+      :hover {
+        cursor: pointer;
+        opacity: 0.75;
+      }
+
+      :active {
+        outline: none;
+      }
     }
   }
 }

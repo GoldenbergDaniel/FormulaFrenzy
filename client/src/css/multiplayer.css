@@ -16,10 +16,37 @@
   background-color: #363636;
 }
 
-#multiplayer #input-box input :focus {
+#multiplayer #input-box input:focus {
   outline: none;
 }
 
-#multiplayer #input-box input:focus {
+#multiplayer #input-box #btn-container {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 5px;
+}
+
+#multiplayer #input-box #btn-container button {
+  font-size: 34px;
+  color: #eaeaea;
+  border: none;
+  background-color: #363636;
+  padding: 5px;
+  border-radius: 0;
+}
+
+#multiplayer #input-box #btn-container :hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+#multiplayer #input-box #btn-container :active {
   outline: none;
 }

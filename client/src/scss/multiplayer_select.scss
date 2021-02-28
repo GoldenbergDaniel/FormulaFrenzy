@@ -1,29 +1,53 @@
 @import "globals";
 
 #multiplayer-select {
-  background-color: $secondary-background;
   position: absolute;
   top: 45%;
   left: 50%;
   margin-top: -50px;
-  margin-left: -260px;
-  padding: 5px;
+  margin-left: -200px;
 
-  #child-container {
-    font-size: 18px;
+  #input-container {
+    background-color: $secondary-background;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 0 5px 0 5px;
 
     input {
-      margin-left: 5px;
-      font-size: 34px;
+      font-size: 32px;
       background: none;
       border: none;
-      width: 40%;
+      width: 85px;
+      padding: 5px;
     }
 
     input:focus {
+      outline: none;
+    }
+  }
+
+  #btn-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+
+    button {
+      font-size: 34px;
+      color: $white;
+      border: none;
+      background-color: $secondary-background;
+      padding: 5px;
+      border-radius: 0;
+    }
+
+    :hover {
+      cursor: pointer;
+      opacity: 0.75;
+    }
+
+    :active {
       outline: none;
     }
   }
