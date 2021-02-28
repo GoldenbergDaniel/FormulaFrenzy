@@ -45,7 +45,7 @@ def generateFunc(maxTerms):
 
 
 def generateOutput(inputArr, functionArr):
-    if functionArr is str:
+    if type(functionArr) == str:
         functionArr = list(functionArr)
 
     if functionArr[0] != "x":

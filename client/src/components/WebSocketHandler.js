@@ -6,6 +6,10 @@ var socket = io.connect("http://127.0.0.1:5000/")
 
 var WebSocketHandler = () => {
 
+  socket.on("message", (msg) => {
+    window.alert(msg)
+  })
+
   socket.on("check", (isCorrect, func) => {
     if (isCorrect) {
       window.alert("Correct!")
