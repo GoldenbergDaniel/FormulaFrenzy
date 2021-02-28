@@ -16,9 +16,16 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      window: "home"
+      window: "multiplayer-select"
     }
     this.homeClick = this.homeClick.bind(this)
+    this.multiplayerClick = this.multiplayerClick.bind(this)
+  }
+
+  multiplayerClick() {
+    this.setState({
+      window: "multiplayer"
+    })
   }
 
   homeClick() {
@@ -40,7 +47,7 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
-          <MultiplayerSelect/>
+          <MultiplayerSelect multiplayer={this.multiplayerClick()}/>
         </div>
       )
     }
