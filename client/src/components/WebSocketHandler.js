@@ -1,14 +1,11 @@
+import io from "socket.io-client"
+
 var socket = io.connect("http://127.0.0.1:5000/")
 
-socket.on("connect", () => {
 
-})
+var WebSocketHandler = () => {
 
 socket.on("message",(msg) => {
-  var functionList = document.getElementById("function-list")
-  var newFunction = document.createElement("p")
-  //newFunction.append(msg)
-  //functionList.appendChild(msg)
   console.log(msg)
 })
 
@@ -26,12 +23,7 @@ socket.on("check", (isCorrect, func) => {
     window.alert("Incorrect! The function should be: " + func)
   }
 })
+  return null
+}
 
-var sendBtn = document.getElementById("send-function-btn")
-sendBtn.addEventListener("click",() => {
-  var funcField = document.getElementById("function-field")
-  var funcList = document.getElementById("function-list")
-
-  socket.emit("join", funcField.value)
-  funcField.value = ""
-})
+export default WebSocketHandler

@@ -79,6 +79,7 @@ def on_join(room):
     join_room(room)
     User = "User: " + request.sid
     send(User + " has entered the room.", room=room)
+    print(User + " has entered the room: " + room)
 
 @socketio.on("leave")
 def on_leave(data):
