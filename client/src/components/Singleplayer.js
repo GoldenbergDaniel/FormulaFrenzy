@@ -3,21 +3,68 @@ import io from "socket.io-client"
 import "../css/singleplayer.css"
 import "../css/index.css"
 
+
+
+
+var socket = io.connect("http://127.0.0.1:5000/")
+
+socket.on("connect", () => {
+
+})
+
+//Don't delete
+socket.on("message",(msg) => {
+  console.log(msg)
+})
+
+var inputDisplay 
+var outputDisplay 
+
+socket.on("question",(dictonary) => {
+  inputDisplay = dictonary.inputs
+  outputDisplay = dictonary.outputs
+
+  window.alert(dictonary.inputs)
+  window.alert(dictonary.outputs)
+  window.alert(dictonary.function)
+  window.alert(dictonary.functionP)
+})
+  
+function check()
+{
+
+  socket.on("check", (isCorrect, func) => {
+    if (isCorrect) {
+      window.alert("Correct!")
+    } else {
+      window.alert("Incorrect! The function should be: " + func)
+    }
+  })
+
+}
+
+//GET RID OF THIS LATER!
+inputDisplay = [0, 2, 3, 4]
+outputDisplay = [6, 7, 5, 3]
+
 var Singleplayer = () => {  
+
+
   return (
     <div id="singleplayer">
       <div id="table" className="white">
-        <div id="input1" className="left top">12</div>
-        <div id="input2" className="top">3</div>
-        <div id="input3" className="top">4</div>
-        <div id="input4" className="top">12</div>
-        <div id="output1" className="left">5</div>
-        <div id="output2">2</div>
-        <div id="output3">0</div>
-        <div id="output4">3</div>
+        <div id="input1" className="left top">{inputDisplay[0]}</div>
+        <div id="input2" className="top">{inputDisplay[1]}</div>
+        <div id="input3" className="top">{inputDisplay[2]}</div>
+        <div id="input4" className="top">{inputDisplay[3]}</div>
+        <div id="output1" className="left">{outputDisplay[0]}</div>
+        <div id="output2">{outputDisplay[1]}</div>
+        <div id="output3">{outputDisplay[2]}</div>
+        <div id="output4">{outputDisplay[3]}</div>
       </div>
       <div id="input-box">
         <input type="text" placeholder="Enter function" id="id-field" className="orange"></input>
+        <button onClick={check()}>Check</button>
       </div>
     </div>
   )
