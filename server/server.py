@@ -35,13 +35,27 @@ app.config["SECRET_KEY"] = "abcde"
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 functions = []
+functionGlobal = []
 
 
-@socketio.on("function")
-def handle_function(func):
+@socketio.on("question")
+def handel_question():
+    functionGlobal = generateFunc(3)
+    initInputArr()
+    output = generateOutput(inputsGlobal, functionGlobal)
+    response = {
+        "inputs": inputsGlobal,
+        "outputs": outputs,
+        "function": ''.join(map(str, functionGlobal)),
+        "functionP": withParentheses(functionGlobal)
+    }
+    return response
+
+@socketio.on("check")
+def check_user_function(func):
     functions.append(func)
     print(functions)
-    output = generateOutput([1,2,3,4,5], str(func))
+    output = generateOutput(inputsGlobal, str(func))
     emit("function", output, broadcast=True)
     return render_template("index.html", funcs=functions)
 
