@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "abcde"
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-functionGlobal = []
+functionGlobal = ["x", "*", 3, "+", 1]
 
 @socketio.on("connect")
 def handle_connection():
