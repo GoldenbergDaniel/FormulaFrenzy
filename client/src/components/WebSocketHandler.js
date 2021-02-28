@@ -15,15 +15,15 @@ var WebSocketHandler = () => {
     }
   })
 
-  socket.on("question",(inputs, outputs, function, functionP) => {
+  socket.on("question",(inputs, outputs, func, functionP) => {
     window.alert(inputs)
     window.alert(outputs)
-    window.alert(function)
+    window.alert(func)
     window.alert(functionP)
 
     Singleplayer.inputDisplay = inputs
     Singleplayer.outputDisplay = outputs
-    Singleplayer.actualFunction = function
+    Singleplayer.actualFunction = func
     Singleplayer.actualFunctionP = functionP
   
 })
@@ -31,10 +31,10 @@ var WebSocketHandler = () => {
 
 //emit("makeTable", onePlayer'sInputFunction)
 //This table is for the other player
-socket.on("makeTable",(inputs, outputs, function, functionP) => {
+socket.on("makeTable",(inputs, outputs, func, functionP) => {
   window.alert(inputs)
   window.alert(outputs)
-  window.alert(function)
+  window.alert(func)
   window.alert(functionP)
 
   //INIT THESE VARIABLES IN MULTIPLAYER
