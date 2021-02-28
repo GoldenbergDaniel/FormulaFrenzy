@@ -36,6 +36,10 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 functionGlobal = []
 
+@socketio.on("connect")
+def handle_connection():
+    join_room(request.sid)
+    send("Assigned to room: " + request.sid)
 
 @socketio.on("question")
 def handle_question():
@@ -53,7 +57,7 @@ def handle_question():
 @socketio.on("check")
 def check_user_function(func):
     boolResp = universalCheck(func, functionGlobal, inputsGlobal)
-    emit("check", boolResp)
+    emit("check", boolResp, room=request.sid)
 
 @socketio.on("join")
 def on_join(room):
