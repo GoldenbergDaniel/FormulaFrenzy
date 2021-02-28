@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
-
 import sys
 sys.path.append("../algorithm")
 from algorithm import *
@@ -9,9 +8,7 @@ from algorithm import *
 #from algorithm.algorithm import *
 
 
-
 ###########################
-
 initInputArr()
 print("Inputs: ", inputsGlobal)
 
@@ -35,18 +32,18 @@ print("Univeral: ", universalCheck(userFunc, functionGlobal, inputsGlobal))
 #############################
 
 
-
-
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "abcde"
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 functionGlobal = []
 
+
 @socketio.on("connect")
 def handle_connection():
     join_room(request.sid)
     send("Assigned to room: " + request.sid)
+
 
 @socketio.on("question")
 def handle_question():
@@ -60,13 +57,13 @@ def handle_question():
         "functionP": withParentheses(functionGlobal)
     }
 
-    
     print("inputs", inputsGlobal,
         "outputs", output,
         "function", ''.join(map(str, functionGlobal)),
         "functionP", withParentheses(functionGlobal))
 
     emit("question", response)
+
 
 @socketio.on("check")
 def check_user_function(func):
@@ -80,6 +77,7 @@ def on_join(room):
     User = "User: " + request.sid
     send(User + " has entered the room.", room=room)
 
+
 @socketio.on("leave")
 def on_leave(data):
     username = data["username"]
@@ -87,6 +85,7 @@ def on_leave(data):
     leave_room(room)
     send(username + " has left the room.", room=room)
     print(username + " has left the room.", room=room)
+
 
 @app.route("/")
 def index():

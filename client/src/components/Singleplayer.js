@@ -32,7 +32,7 @@ socket.on("connect", () => {
 })
 
 //Don't delete
-socket.on("message",(msg) => {
+socket.on("message", (msg) => {
   console.log(msg)
 })
 
