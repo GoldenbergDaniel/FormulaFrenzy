@@ -9,6 +9,9 @@ var socket = io.connect("http://127.0.0.1:5000/")
 // var inputDisplay 
 // var outputDisplay 
 
+var actualFunction 
+var actualFunctionP
+
 var check = () => {
   var inputFunc = document.getElementById("id-field")
   socket.emit("check", inputFunc.value)

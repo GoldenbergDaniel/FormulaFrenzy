@@ -53,40 +53,33 @@ def handle_question():
     print("Func G: ", functionGlobal)
     initInputArr()
     output = generateOutput(inputsGlobal, functionGlobal)
-    response = {
-        "inputs": inputsGlobal,
-        "outputs": output,
-        "function": ''.join(map(str, functionGlobal)),
-        "functionP": withParentheses(functionGlobal)
-    }
-
     
     print("inputs", inputsGlobal,
         "outputs", output,
         "function", ''.join(map(str, functionGlobal)),
         "functionP", withParentheses(functionGlobal))
 
-    emit("question", response)
+    emit("question", inputsGlobal, output, ''.join(map(str, functionGlobal)), withParentheses(functionGlobal))
 
 @socketio.on("makeTable")
 def make_table_given_function_for_multiplayer(func):
     functionGlobal = list(func)
     initInputArr()
     output = generateOutput(inputsGlobal, func)
-    response = {
+    """response = {
         "inputs": inputsGlobal,
         "outputs": output,
         "function": ''.join(map(str, functionGlobal)),
         "functionP": withParentheses(functionGlobal)
-    }
+    }"""
 
     
     print("inputs", inputsGlobal,
         "outputs", output,
         "function", ''.join(map(str, functionGlobal)),
         "functionP", withParentheses(functionGlobal))
-        
-    emit("makeTable", )
+
+    emit("makeTable", inputsGlobal, output, ''.join(map(str, functionGlobal)), withParentheses(functionGlobal))
 
 @socketio.on("check")
 def check_user_function(func):

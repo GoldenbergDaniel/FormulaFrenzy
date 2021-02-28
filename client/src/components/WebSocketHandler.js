@@ -1,4 +1,5 @@
 import io from "socket.io-client"
+import Multiplayer from "./Multiplayer";
 import Singleplayer from "./Singleplayer";
 
 var socket = io.connect("http://127.0.0.1:5000/")
@@ -14,15 +15,34 @@ var WebSocketHandler = () => {
     }
   })
 
-  socket.on("question",(dictonary) => {
-  window.alert(dictonary)
-  Singleplayer.inputDisplay = dictonary.inputs
-  Singleplayer.outputDisplay = dictonary.outputs
+  socket.on("question",(inputs, outputs, function, functionP) => {
+    window.alert(inputs)
+    window.alert(outputs)
+    window.alert(function)
+    window.alert(functionP)
 
-  window.alert(dictonary.inputs)
-  window.alert(dictonary.outputs)
-  window.alert(dictonary.function)
-  window.alert(dictonary.functionP)
+    Singleplayer.inputDisplay = inputs
+    Singleplayer.outputDisplay = outputs
+    Singleplayer.actualFunction = function
+    Singleplayer.actualFunctionP = functionP
+  
+})
+
+
+//emit("makeTable", onePlayer'sInputFunction)
+//This table is for the other player
+socket.on("makeTable",(inputs, outputs, function, functionP) => {
+  window.alert(inputs)
+  window.alert(outputs)
+  window.alert(function)
+  window.alert(functionP)
+
+  //INIT THESE VARIABLES IN MULTIPLAYER
+  Multiplayer.inputDisplay = inputs
+  Multiplayer.outputDisplay = outputs
+  Multiplayer.actualFunction = function
+  Multiplayer.actualFunctionP = functionP
+
 })
 
 socket.on("message",(msg) => {
