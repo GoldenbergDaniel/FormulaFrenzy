@@ -38,6 +38,6 @@
   background-color: #363636;
 }
 
-#multiplayer #input-box input:focus {
+#multiplayer #input-box input :focus {
   outline: none;
 }

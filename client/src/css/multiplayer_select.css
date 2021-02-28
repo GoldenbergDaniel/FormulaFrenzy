@@ -29,6 +29,6 @@
   width: 40%;
 }
 
-#multiplayer-select #child-container input:focus {
+#multiplayer-select #child-container input :focus {
   outline: none;
 }

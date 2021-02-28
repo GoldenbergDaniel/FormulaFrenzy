@@ -18,6 +18,10 @@
   font-size: 1.5rem;
 }
 
+#navbar #nav-title :hover {
+  cursor: pointer;
+}
+
 #navbar #nav-info {
   margin-left: auto;
   font-size: 0.75rem;
