@@ -3,27 +3,7 @@ import io from "socket.io-client"
 import "../css/singleplayer.css"
 
 import Table from "./Table"
-
-// import React, { Component } from "react";
-
-// class Singleplayer extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//     };
-//     this.onInputchange = this.onInputchange.bind(this);
-//     this.onSubmitForm = this.onSubmitForm.bind(this);
-//   }
-
-//   onInputchange(event) {
-//     this.setState({
-//       [event.target.name]: event.target.value
-//     });
-//   }
-
-//   onSubmitForm() {
-//     console.log(this.state)
-//   }
+import Stats from "./Stats"
 
 var socket = io.connect("http://127.0.0.1:5000/")
 
@@ -76,6 +56,7 @@ var Singleplayer = () => {
   return (
     <div id="singleplayer">
       <div id="input-box">
+        <Stats mode="singleplayer"/>
         <Table inputDisplay={inputDisplay} outputDisplay={outputDisplay}/>
         <input type="text" placeholder="Enter function" id="id-field" className="orange"></input>
         <button onClick={() => {
