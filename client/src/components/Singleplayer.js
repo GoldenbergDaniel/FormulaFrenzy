@@ -1,9 +1,29 @@
-import React, { useState, useEffect} from "react"
+//import React, { useState, useEffect} from "react"
 import io from "socket.io-client"
 import "../css/singleplayer.css"
 import "../css/index.css"
 
 
+// import React, { Component } from "react";
+
+// class Singleplayer extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//     };
+//     this.onInputchange = this.onInputchange.bind(this);
+//     this.onSubmitForm = this.onSubmitForm.bind(this);
+//   }
+
+//   onInputchange(event) {
+//     this.setState({
+//       [event.target.name]: event.target.value
+//     });
+//   }
+
+//   onSubmitForm() {
+//     console.log(this.state)
+//   }
 
 
 var socket = io.connect("http://127.0.0.1:5000/")
@@ -30,10 +50,13 @@ socket.on("question",(dictonary) => {
   window.alert(dictonary.functionP)
 })
   
+var inputFunc 
+
 function check()
 {
-
   socket.on("check", (isCorrect, func) => {
+    //EXAMPLE OF USER INPUT
+    socket.emit(inputFunc)
     if (isCorrect) {
       window.alert("Correct!")
     } else {
@@ -41,14 +64,18 @@ function check()
     }
   })
 
+  
 }
 
 //GET RID OF THIS LATER!
 inputDisplay = [0, 2, 3, 4]
 outputDisplay = [6, 7, 5, 3]
 
+userFunc = "x^2+3"
+
 var Singleplayer = () => {  
 
+const { items } = this.state;
 
   return (
     <div id="singleplayer">
@@ -63,7 +90,7 @@ var Singleplayer = () => {
         <div id="output4">{outputDisplay[3]}</div>
       </div>
       <div id="input-box">
-        <input type="text" placeholder="Enter function" id="id-field" className="orange"></input>
+        <input type="text" placeholder="Enter function" id="id-field" className="orange" name="userFunc" onChange={userFunc = "x^3*5"}></input>
         <button onClick={check()}>Check</button>
       </div>
     </div>
