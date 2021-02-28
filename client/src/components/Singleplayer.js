@@ -1,8 +1,11 @@
 // import React, { useState} from "react"
 import "../css/singleplayer.css"
 import WebSocketHandler from "./WebSocketHandler";
-
+import io from "socket.io-client"
 import Table from "./Table"
+
+var socket = io.connect("http://127.0.0.1:5000/")
+
 
 // import React, { Component } from "react";
 
@@ -46,7 +49,7 @@ var inputFunc
 
 function check() {
   var inputBox = document.getElementById("id-field")
-  WebSocketHandler.socket.emit("check", inputBox.value)
+  socket.emit("check", inputBox.value)
 }
 
 
