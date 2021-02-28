@@ -25,13 +25,7 @@ function check() {
 }
 
 
-
-
-
-// var userFunc = "x^2+3"
-
 var Singleplayer = () => {  
-  // var [ items, setItems ] = useState();
 
   return (
     <body onLoad={socket.emit("question")}>
