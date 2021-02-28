@@ -1,5 +1,21 @@
 @import "globals";
 
-#gamemode_select {
+#gamemode-select {
+  position: absolute;
+  top: 40%;
+  left: 37%;
+  margin-top: -50px;
+  margin-left: -50px;
+  padding: 5px;
 
+  .child-container {
+    background-color: $secondary-background;
+    font-size: 18px;
+    display: flex;
+    margin: 10px;
+    padding: 5px;
+    :hover {
+      cursor: pointer;
+    }
+  }
 }

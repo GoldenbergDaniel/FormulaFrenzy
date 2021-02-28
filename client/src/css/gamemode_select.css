@@ -1,1 +1,22 @@
-/* No CSS */
+#gamemode-select {
+  position: absolute;
+  top: 40%;
+  left: 37%;
+  margin-top: -50px;
+  margin-left: -50px;
+  padding: 5px;
+}
+
+#gamemode-select .child-container {
+  background-color: #363636;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px;
+  padding: 5px;
+}
+
+#gamemode-select .child-container :hover {
+  cursor: pointer;
+}

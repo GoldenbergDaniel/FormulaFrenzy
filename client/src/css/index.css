@@ -8,14 +8,18 @@ body {
   background-color: #262626;
 }
 
+.blue {
+  color: #699bd0;
+}
+
 .orange {
   color: #df8244;
 }
 
-.white {
-  color: #f1f1f1;
+.green {
+  color: #7eaa55;
 }
 
-.blue {
-  color: #699bd0;
+.white {
+  color: #eaeaea;
 }
