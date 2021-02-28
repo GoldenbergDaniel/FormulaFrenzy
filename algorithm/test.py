@@ -3,7 +3,7 @@ from algorithm import *
 initInputArr()
 print("Inputs: ", inputsGlobal)
 
-functionGlobal = generateFunc(4)
+functionGlobal = generateFunc(3)
 
 functionGlobal_display = ''.join(map(str, functionGlobal))
 

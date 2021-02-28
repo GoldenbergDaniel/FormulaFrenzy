@@ -48,6 +48,11 @@ def generateOutput(inputArr, functionArr):
     if functionArr is str:
         functionArr = list(functionArr)
 
+    if functionArr[0] != "x":
+        temp = functionArr[2]
+        functionArr[2] = functionArr[0]
+        functionArr[0] = temp
+
     outputArr = []
 
     for j in range(len(inputArr)):
