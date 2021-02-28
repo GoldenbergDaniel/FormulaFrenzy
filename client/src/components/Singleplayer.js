@@ -1,4 +1,4 @@
-//import React, { useState, useEffect} from "react"
+import React, { useState} from "react"
 import io from "socket.io-client"
 import "../css/singleplayer.css"
 import "../css/index.css"
@@ -71,11 +71,11 @@ function check()
 inputDisplay = [0, 2, 3, 4]
 outputDisplay = [6, 7, 5, 3]
 
-userFunc = "x^2+3"
+var userFunc = "x^2+3"
 
 var Singleplayer = () => {  
 
-const { items } = this.state;
+  var [ items, setItems ] = useState();
 
   return (
     <div id="singleplayer">
