@@ -39,13 +39,13 @@ functionGlobal = []
 
 
 @socketio.on("question")
-def handel_question():
+def handle_question():
     functionGlobal = generateFunc(3)
     initInputArr()
     output = generateOutput(inputsGlobal, functionGlobal)
     response = {
         "inputs": inputsGlobal,
-        "outputs": outputs,
+        "outputs": output,
         "function": ''.join(map(str, functionGlobal)),
         "functionP": withParentheses(functionGlobal)
     }
