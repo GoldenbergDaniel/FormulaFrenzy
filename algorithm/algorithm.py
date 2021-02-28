@@ -144,6 +144,7 @@ def checkFuncDynamic(inputFunction, realFunction, inputs):
     real = generateOutput(inputs, realFunction)
     # print("real: ", real)
     user = generateOutput(inputs, inputFunctionList)
+    print("User function passed to parser: ", inputFunctionList)
     # print("user: ", user)
     print(realFunction)
 
