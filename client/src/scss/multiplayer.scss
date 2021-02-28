@@ -1,4 +1,45 @@
 @import "globals";
-#multiplayer {
 
+#multiplayer {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  margin-top: -50px;
+  margin-left: -50px;
+  
+  #table {
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr 4fr;
+    font-size: 32px;
+
+    div {
+      padding: 10px;
+      border-right: 3px solid $secondary-background;
+      border-bottom: 3px solid $secondary-background;
+    }
+
+    .left {
+      border-left: 3px solid $secondary-background;
+    }
+
+    .top {
+      border-top: 3px solid $secondary-background;
+    }
+  }
+
+  #input-box {
+    input {
+      font-size: 34px;
+      background: none;
+      border: none;
+      margin-top: 15px;
+      padding: 5px;
+      text-align: center;
+      background-color: $secondary-background;
+    }
+
+    input:focus {
+      outline: none;
+    }
+  }
 }

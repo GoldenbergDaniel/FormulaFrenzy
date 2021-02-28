@@ -5,7 +5,7 @@ import "../css/gamemode_select.css"
 var GamemodeSelect = () => {  
   return (
     <div id="gamemode-select">
-
+      
     </div>
   )
 }
