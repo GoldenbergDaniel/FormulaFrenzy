@@ -69,7 +69,9 @@ def handle_question():
 
 @socketio.on("check")
 def check_user_function(func):
-    boolResp = universalCheck(func, functionGlobal, inputsGlobal)
+    print("Check: ", ''.join(map(str, func)))
+    print("Function global: ", functionGlobal)
+    boolResp = universalCheck(''.join(map(str, func)), functionGlobal, inputsGlobal)
     emit("check", boolResp, ''.join(map(str, functionGlobal)),  room=request.sid)
     
 

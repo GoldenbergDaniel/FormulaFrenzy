@@ -15,6 +15,7 @@ var WebSocketHandler = () => {
   })
 
   socket.on("question",(dictonary) => {
+  window.alert(dictonary)
   Singleplayer.inputDisplay = dictonary.inputs
   Singleplayer.outputDisplay = dictonary.outputs
 
