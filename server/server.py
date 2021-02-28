@@ -46,12 +46,10 @@ def handle_function(func):
     return render_template("index.html", funcs=functions)
 
 @socketio.on("join")
-def on_join(data):
-    username = data["username"]
-    room = data["room"]
+def on_join(room):
     join_room(room)
-    send(username + " has entered the room.", room=room, broadcast=True)
-    print(username + " has entered the room.", room=room)
+    User = "User: " + request.sid
+    send(User + " has entered the room.", room=room)
 
 @socketio.on("leave")
 def on_leave(data):
