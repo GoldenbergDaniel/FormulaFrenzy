@@ -19,11 +19,11 @@ socket.on("function",(func) => {
   functionList.appendChild(newFunction)
 })
 
-socket.on("check", (isCorrect) => {
+socket.on("check", (isCorrect, func) => {
   if (isCorrect) {
-    console.log("Correct input!")
+    window.alert("Correct!")
   } else {
-    console.log("Incorrect input!")
+    window.alert("Incorrect! The function should be: " + func)
   }
 })
 
