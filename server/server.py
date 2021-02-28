@@ -34,7 +34,6 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "abcde"
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-functions = []
 functionGlobal = []
 
 
@@ -49,15 +48,12 @@ def handle_question():
         "function": ''.join(map(str, functionGlobal)),
         "functionP": withParentheses(functionGlobal)
     }
-    return response
+    emit("question", response)
 
 @socketio.on("check")
 def check_user_function(func):
-    functions.append(func)
-    print(functions)
-    output = generateOutput(inputsGlobal, str(func))
-    emit("function", output, broadcast=True)
-    return render_template("index.html", funcs=functions)
+    boolResp = universalCheck(func, functionGlobal, inputsGlobal)
+    emit("check", boolResp)
 
 @socketio.on("join")
 def on_join(room):
