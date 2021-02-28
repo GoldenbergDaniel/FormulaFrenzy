@@ -1,4 +1,30 @@
 @import "globals";
-#multiplayer_select {
 
+#multiplayer-select {
+  background-color: $secondary-background;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  margin-top: -50px;
+  margin-left: -50px;
+  padding: 5px;
+
+  #child-container {
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      margin-left: 5px;
+      font-size: 34px;
+      background: none;
+      border: none;
+      width: 40%;
+    }
+
+    input:focus {
+      outline: none;
+    }
+  }
 }

@@ -1,1 +1,43 @@
-/* No CSS */
+#multiplayer {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+#multiplayer #table {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4fr 4fr 4fr 4fr;
+      grid-template-columns: 4fr 4fr 4fr 4fr;
+  font-size: 32px;
+}
+
+#multiplayer #table div {
+  padding: 10px;
+  border-right: 3px solid #363636;
+  border-bottom: 3px solid #363636;
+}
+
+#multiplayer #table .left {
+  border-left: 3px solid #363636;
+}
+
+#multiplayer #table .top {
+  border-top: 3px solid #363636;
+}
+
+#multiplayer #input-box input {
+  font-size: 34px;
+  background: none;
+  border: none;
+  margin-top: 15px;
+  padding: 5px;
+  text-align: center;
+  background-color: #363636;
+}
+
+#multiplayer #input-box input:focus {
+  outline: none;
+}
