@@ -9,7 +9,7 @@ outputsGlobal = []
 def initInputArr():
     forRange = 3
     for i in range(forRange):
-        rand = r.randint(1, 10)
+        rand = r.randint(1, 9)
         if (rand in inputsGlobal) == False:
             inputsGlobal.append(rand)
         else:
@@ -28,7 +28,7 @@ def generateFunc(maxTerms):
     for i in range(forRange):
 
         if i % 2 != 0:
-            function.append(r.randint(1, 10))
+            function.append(r.randint(1, 9))
         else:
             function.append("x")
         if i != forRange - 1:
@@ -37,7 +37,7 @@ def generateFunc(maxTerms):
     return function
 
 
-functionGlobal = generateFunc(4)
+# functionGlobal = generateFunc(4)
 
 
 # functionGlobal_display = ''.join(map(str, functionGlobal))
