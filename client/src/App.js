@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar"
 import MultiplayerSelect from "./components/MultiplayerSelect"
 import Singleplayer from "./components/Singleplayer"
 import Multiplayer from "./components/Multiplayer"
+import GamemodeSelect from "./components/GamemodeSelect"
 
 var endPoint = "http://localhost:5000"
 var socket = io.connect(`${endPoint}`)
@@ -15,9 +16,16 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      window: "multiplayer"
+      window: "multiplayer-select"
     }
     this.homeClick = this.homeClick.bind(this)
+    this.multiplayerClick = this.multiplayerClick.bind(this)
+  }
+
+  multiplayerClick() {
+    this.setState({
+      window: "multiplayer"
+    })
   }
 
   homeClick() {
@@ -31,13 +39,7 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
-        </div>
-      )
-    }
-    else if (this.state.window  === "gamemode-select") {
-      return (
-        <div id="app">
-          <Navbar home={this.homeClick}/>
+          <GamemodeSelect/>
         </div>
       )
     }
@@ -45,7 +47,7 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
-          <MultiplayerSelect/>
+          <MultiplayerSelect multiplayer={this.multiplayerClick()}/>
         </div>
       )
     }
@@ -67,5 +69,35 @@ class App extends React.Component {
     }
   }
 }
+
+
+// var [funcs, setFuncs] = useState(["2x"])
+// var [func, setFunc] = useState("")
+
+// useEffect(() => {
+//   getFuncs()
+// }, [funcs.length])
+
+// var getFuncs = () => {
+//   socket.on("function", func => {
+//     setFuncs([...funcs, func])
+//   })
+// }
+
+// var onChange = e => {
+//   setFunc(e.target.value)
+// }
+
+// var onClick = () => {
+//   if (func!=""){
+//     if (func.includes("x") && (func.includes("+") || func.includes("-") || func.includes("*") || func.includes("^"))){
+//       socket.emit("function",func)
+//     } else {
+//       alert("Invalid Function!")
+//     }
+//   } else {
+//     alert("Please enter a Function")
+//   }
+// }
 
 export default App

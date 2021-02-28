@@ -1,38 +1,8 @@
-import React, { useState, useEffect} from "react"
-import io from "socket.io-client"
+import React, { useState } from "react"
 import "../css/multiplayer.css"
 import "../css/index.css"
 
 var Multiplayer = () => {
-  // var [funcs, setFuncs] = useState(["2x"])
-  // var [func, setFunc] = useState("")
-
-  // useEffect(() => {
-  //   getFuncs()
-  // }, [funcs.length])
-
-  // var getFuncs = () => {
-  //   socket.on("function", func => {
-  //     setFuncs([...funcs, func])
-  //   })
-  // }
-
-  // var onChange = e => {
-  //   setFunc(e.target.value)
-  // }
-
-  // var onClick = () => {
-  //   if (func!=""){
-  //     if (func.includes("x") && (func.includes("+") || func.includes("-") || func.includes("*") || func.includes("^"))){
-  //       socket.emit("function",func)
-  //     } else {
-  //       alert("Invalid Function!")
-  //     }
-  //   } else {
-  //     alert("Please enter a Function")
-  //   }
-  // }
-
   var [isGuesser, setGuesser] = useState(true)
 
   if (!isGuesser) {
