@@ -16,16 +16,12 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      window: "multiplayer-select"
+      window: "home"
     }
     this.homeClick = this.homeClick.bind(this)
     this.multiplayerClick = this.multiplayerClick.bind(this)
-  }
-
-  multiplayerClick() {
-    this.setState({
-      window: "multiplayer"
-    })
+    this.multiplayerSelectClick = this.multiplayerSelectClick.bind(this)
+    this.singleplayerClick = this.singleplayerClick.bind(this)
   }
 
   homeClick() {
@@ -34,12 +30,30 @@ class App extends React.Component {
     })
   }
 
+  multiplayerSelectClick() {
+    this.setState({
+      window: "multiplayer-select"
+    })
+  }
+
+  singleplayerClick() {
+    this.setState({
+      window: "singleplayer" 
+    })
+  }
+
+  multiplayerClick() {
+    this.setState({
+      window: "multiplayer"
+    })
+  }
+
   render() {
     if (this.state.window === "home") {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
-          <GamemodeSelect/>
+          <GamemodeSelect singleplayer={this.singleplayerClick} multiplayer_select={this.multiplayerSelectClick}/>
         </div>
       )
     }
@@ -47,7 +61,7 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
-          <MultiplayerSelect multiplayer={this.multiplayerClick()}/>
+          <MultiplayerSelect multiplayer={this.multiplayerClick}/>
         </div>
       )
     }

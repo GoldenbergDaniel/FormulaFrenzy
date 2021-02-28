@@ -41,3 +41,7 @@
 #multiplayer #input-box input :focus {
   outline: none;
 }
+
+#multiplayer #input-box input:focus {
+  outline: none;
+}

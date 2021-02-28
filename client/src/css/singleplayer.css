@@ -38,6 +38,6 @@
   background-color: #363636;
 }
 
-#singleplayer #input-box input :focus {
+#singleplayer #input-box input:focus {
   outline: none;
 }
