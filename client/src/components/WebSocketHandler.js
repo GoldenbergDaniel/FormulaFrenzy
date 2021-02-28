@@ -40,7 +40,7 @@ socket.on("makeTable",(inputs, outputs, func, functionP) => {
   //INIT THESE VARIABLES IN MULTIPLAYER
   Multiplayer.inputDisplay = inputs
   Multiplayer.outputDisplay = outputs
-  Multiplayer.actualFunction = function
+  Multiplayer.actualFunction = func
   Multiplayer.actualFunctionP = functionP
 
 })

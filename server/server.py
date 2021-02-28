@@ -6,36 +6,6 @@ import sys
 sys.path.append("../algorithm")
 from algorithm import *
 
-"""
-#from algorithm.algorithm import *
-
-
-
-###########################
-
-initInputArr()
-print("Inputs: ", inputsGlobal)
-
-functionGlobal = generateFunc(4)
-
-functionGlobal_display = ''.join(map(str, functionGlobal))
-
-
-print("Function: ", functionGlobal_display)
-
-outputsGlobal = generateOutput(inputsGlobal, functionGlobal)
-print("Outputs: ", outputsGlobal)
-
-print("With Parentheses: ", ''.join(map(str, withParentheses(functionGlobal))))
-
-userFunc = input("Guess: ")
-
-print("Dynamic: ", checkFuncDynamic(userFunc, functionGlobal, inputsGlobal))
-print("Static: ", checkFuncStatic(userFunc, functionGlobal))
-print("Univeral: ", universalCheck(userFunc, functionGlobal, inputsGlobal))
-#############################
-"""
-
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "abcde"
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -88,7 +58,6 @@ def check_user_function(func):
     boolResp = universalCheck(''.join(map(str, func)), functionGlobal, inputsGlobal)
     emit("check", boolResp, ''.join(map(str, functionGlobal)),  room=request.sid)
     
-
 @socketio.on("join")
 def on_join(room):
     join_room(room)
