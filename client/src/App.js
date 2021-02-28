@@ -1,5 +1,5 @@
 import React from "react"
-import io from "socket.io-client"
+//import io from "socket.io-client"
 import "./css/index.css"
 import "./css/App.css"
 
@@ -10,8 +10,8 @@ import Multiplayer from "./components/Multiplayer"
 import GamemodeSelect from "./components/GamemodeSelect"
 import WebSocketHandler from "./components/WebSocketHandler"
 
-var endPoint = "http://localhost:5000"
-var socket = io.connect(`${endPoint}`)
+//var endPoint = "http://localhost:5000"
+//var socket = io.connect(`${endPoint}`)
 
 class App extends React.Component {
   constructor() {

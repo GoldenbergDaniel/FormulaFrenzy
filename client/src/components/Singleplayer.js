@@ -1,6 +1,6 @@
 // import React, { useState} from "react"
-import io from "socket.io-client"
 import "../css/singleplayer.css"
+import WebSocketHandler from "./WebSocketHandler";
 
 import Table from "./Table"
 
@@ -25,20 +25,12 @@ import Table from "./Table"
 //     console.log(this.state)
 //   }
 
-var socket = io.connect("http://127.0.0.1:5000/")
-
-socket.on("connect", () => {
-
-})
-
 //Don't delete
-socket.on("message",(msg) => {
-  console.log(msg)
-})
 
 var inputDisplay 
 var outputDisplay 
 
+/*
 socket.on("question",(dictonary) => {
   inputDisplay = dictonary.inputs
   outputDisplay = dictonary.outputs
@@ -48,21 +40,15 @@ socket.on("question",(dictonary) => {
   window.alert(dictonary.function)
   window.alert(dictonary.functionP)
 })
+ */
 
 var inputFunc 
 
 function check() {
-  socket.on("check", (isCorrect, func) => {
-    //EXAMPLE OF USER INPUT
-    socket.emit(inputFunc)
-    if (isCorrect) {
-      window.alert("Correct!")
-    } 
-    else {
-      window.alert("Incorrect! The function should be: " + func)
-    }
-  })
+  var inputBox = document.getElementById("id-field")
+  WebSocketHandler.socket.emit("check", inputBox.value)
 }
+
 
 //GET RID OF THIS LATER!
 inputDisplay = [0, 2, 3, 4]

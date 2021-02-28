@@ -1,9 +1,9 @@
 import "../css/multiplayer_select.css"
 import "../css/index.css"
+import WebSocketHandler from "./WebSocketHandler";
 import io from "socket.io-client"
 
-var endPoint = "http://localhost:5000"
-var socket = io.connect(`${endPoint}`)
+var socket = io.connect("http://127.0.0.1:5000/")
 
 function clickHandler(props){
     var inputBox = document.getElementById("id-field")

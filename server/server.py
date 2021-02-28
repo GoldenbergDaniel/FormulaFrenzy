@@ -6,6 +6,7 @@ import sys
 sys.path.append("../algorithm")
 from algorithm import *
 
+"""
 #from algorithm.algorithm import *
 
 
@@ -33,9 +34,7 @@ print("Dynamic: ", checkFuncDynamic(userFunc, functionGlobal, inputsGlobal))
 print("Static: ", checkFuncStatic(userFunc, functionGlobal))
 print("Univeral: ", universalCheck(userFunc, functionGlobal, inputsGlobal))
 #############################
-
-
-
+"""
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "abcde"
