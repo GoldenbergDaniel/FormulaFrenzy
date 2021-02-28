@@ -1,0 +1,22 @@
+#table {
+  color: #eaeaea;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4fr 4fr 4fr 4fr;
+      grid-template-columns: 4fr 4fr 4fr 4fr;
+  font-size: 32px;
+}
+
+#table div {
+  padding: 10px;
+  border-right: 3px solid #363636;
+  border-bottom: 3px solid #363636;
+}
+
+#table .left {
+  border-left: 3px solid #363636;
+}
+
+#table .top {
+  border-top: 3px solid #363636;
+}

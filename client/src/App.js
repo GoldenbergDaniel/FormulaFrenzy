@@ -1,5 +1,5 @@
 import React from "react"
-import io from "socket.io-client"
+// import io from "socket.io-client"
 import "./css/index.css"
 import "./css/App.css"
 
@@ -9,15 +9,17 @@ import Singleplayer from "./components/Singleplayer"
 import Multiplayer from "./components/Multiplayer"
 import GamemodeSelect from "./components/GamemodeSelect"
 
-var endPoint = "http://localhost:5000"
-var socket = io.connect(`${endPoint}`)
+// var endPoint = "http://localhost:5000"
+// var socket = io.connect(`${endPoint}`)
 
 class App extends React.Component {
   constructor() {
     super()
+    
     this.state = {
       window: "home"
     }
+
     this.homeClick = this.homeClick.bind(this)
     this.multiplayerClick = this.multiplayerClick.bind(this)
     this.multiplayerSelectClick = this.multiplayerSelectClick.bind(this)
@@ -61,7 +63,7 @@ class App extends React.Component {
       return (
         <div id="app">
           <Navbar home={this.homeClick}/>
-          <MultiplayerSelect multiplayer={this.multiplayerClick}/>
+          <MultiplayerSelect multiplayer={this.homeClick}/>
         </div>
       )
     }
@@ -83,7 +85,6 @@ class App extends React.Component {
     }
   }
 }
-
 
 // var [funcs, setFuncs] = useState(["2x"])
 // var [func, setFunc] = useState("")

@@ -1,8 +1,8 @@
-import React, { useState} from "react"
+// import React, { useState} from "react"
 import io from "socket.io-client"
 import "../css/singleplayer.css"
-import "../css/index.css"
 
+import Table from "./Table"
 
 // import React, { Component } from "react";
 
@@ -24,7 +24,6 @@ import "../css/index.css"
 //   onSubmitForm() {
 //     console.log(this.state)
 //   }
-
 
 var socket = io.connect("http://127.0.0.1:5000/")
 
@@ -49,52 +48,42 @@ socket.on("question",(dictonary) => {
   window.alert(dictonary.function)
   window.alert(dictonary.functionP)
 })
-  
+
 var inputFunc 
 
-function check()
-{
+function check() {
   socket.on("check", (isCorrect, func) => {
     //EXAMPLE OF USER INPUT
     socket.emit(inputFunc)
     if (isCorrect) {
       window.alert("Correct!")
-    } else {
+    } 
+    else {
       window.alert("Incorrect! The function should be: " + func)
     }
   })
-
-  
 }
 
 //GET RID OF THIS LATER!
 inputDisplay = [0, 2, 3, 4]
 outputDisplay = [6, 7, 5, 3]
 
-var userFunc = "x^2+3"
+// var userFunc = "x^2+3"
 
 var Singleplayer = () => {  
-
-  var [ items, setItems ] = useState();
+  // var [ items, setItems ] = useState();
 
   return (
     <div id="singleplayer">
-      <div id="table" className="white">
-        <div id="input1" className="left top">{inputDisplay[0]}</div>
-        <div id="input2" className="top">{inputDisplay[1]}</div>
-        <div id="input3" className="top">{inputDisplay[2]}</div>
-        <div id="input4" className="top">{inputDisplay[3]}</div>
-        <div id="output1" className="left">{outputDisplay[0]}</div>
-        <div id="output2">{outputDisplay[1]}</div>
-        <div id="output3">{outputDisplay[2]}</div>
-        <div id="output4">{outputDisplay[3]}</div>
-      </div>
       <div id="input-box">
-        <input type="text" placeholder="Enter function" id="id-field" className="orange" name="userFunc" onChange={userFunc = "x^3*5"}></input>
-        <button onClick={check()}>Check</button>
+        <Table inputDisplay={inputDisplay} outputDisplay={outputDisplay}/>
+        <input type="text" placeholder="Enter function" id="id-field" className="orange"></input>
+        <button onClick={() => {
+          check()
+        }}>Check</button>
       </div>
     </div>
   )
 }
-    
+
 export default Singleplayer

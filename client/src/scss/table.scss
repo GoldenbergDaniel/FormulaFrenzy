@@ -1,0 +1,22 @@
+@import "globals";
+
+#table {
+  color: $white;
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr 4fr;
+  font-size: 32px;
+
+  div {
+    padding: 10px;
+    border-right: 3px solid $secondary-background;
+    border-bottom: 3px solid $secondary-background;
+  }
+
+  .left {
+    border-left: 3px solid $secondary-background;
+  }
+
+  .top {
+    border-top: 3px solid $secondary-background;
+  }
+}

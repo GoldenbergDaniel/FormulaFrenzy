@@ -1,5 +1,4 @@
 import "../css/gamemode_select.css"
-import "../css/index.css"
 
 var GamemodeSelect = (props) => {  
   return (

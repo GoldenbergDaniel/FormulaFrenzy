@@ -3,10 +3,10 @@
 #multiplayer-select {
   background-color: $secondary-background;
   position: absolute;
-  top: 50%;
-  left: 40%;
+  top: 45%;
+  left: 50%;
   margin-top: -50px;
-  margin-left: -50px;
+  margin-left: -260px;
   padding: 5px;
 
   #child-container {
@@ -21,10 +21,10 @@
       background: none;
       border: none;
       width: 40%;
+    }
 
-      :focus {
-        outline: none;
-      }
+    input:focus {
+      outline: none;
     }
   }
 }

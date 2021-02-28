@@ -2,30 +2,10 @@
 
 #multiplayer {
   position: absolute;
-  top: 45%;
-  left: 40%;
-  margin-top: -50px;
-  margin-left: -50px;
-  
-  #table {
-    display: grid;
-    grid-template-columns: 4fr 4fr 4fr 4fr;
-    font-size: 32px;
-
-    div {
-      padding: 10px;
-      border-right: 3px solid $secondary-background;
-      border-bottom: 3px solid $secondary-background;
-    }
-
-    .left {
-      border-left: 3px solid $secondary-background;
-    }
-
-    .top {
-      border-top: 3px solid $secondary-background;
-    }
-  }
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -175px;
 
   #input-box {
     input {

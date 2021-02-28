@@ -1,9 +1,9 @@
 #gamemode-select {
   position: absolute;
   top: 40%;
-  left: 37%;
+  left: 50%;
   margin-top: -50px;
-  margin-left: -50px;
+  margin-left: -250px;
   padding: 5px;
 }
 

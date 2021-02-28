@@ -1,5 +1,4 @@
 import "../css/multiplayer_select.css"
-import "../css/index.css"
 
 var MultiplayerSelect = (props) => {
   return (
