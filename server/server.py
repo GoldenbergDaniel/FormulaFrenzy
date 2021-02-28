@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
-import sys
-sys.path.append("../algorithm")
-from algorithm import *
+from algorithm.algorithm import *
 
 ###########################
 
@@ -36,22 +34,37 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "abcde"
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-functions = []
+functionGlobal = []
 
-@socketio.on("function")
-def handle_function(string):
-    functions.append(string)
-    emit("function", string, broadcast=True)
-    print(functions)
-    return render_template("index.html", funcs=functions)
+@socketio.on("connect")
+def handle_connection():
+    join_room(request.sid)
+    send("Assigned to room: " + request.sid)
+
+@socketio.on("question")
+def handle_question():
+    functionGlobal = generateFunc(3)
+    initInputArr()
+    output = generateOutput(inputsGlobal, functionGlobal)
+    response = {
+        "inputs": inputsGlobal,
+        "outputs": output,
+        "function": ''.join(map(str, functionGlobal)),
+        "functionP": withParentheses(functionGlobal)
+    }
+    emit("question", response)
+
+@socketio.on("check")
+def check_user_function(func):
+    boolResp = universalCheck(func, functionGlobal, inputsGlobal)
+    emit("check", boolResp, ''.join(map(str, functionGlobal)),  room=request.sid)
+    
 
 @socketio.on("join")
-def on_join(data):
-    username = data["username"]
-    room = data["room"]
+def on_join(room):
     join_room(room)
-    send(username + " has entered the room.", room=room, broadcast=True)
-    print(username + " has entered the room.", room=room)
+    User = "User: " + request.sid
+    send(User + " has entered the room.", room=room)
 
 @socketio.on("leave")
 def on_leave(data):

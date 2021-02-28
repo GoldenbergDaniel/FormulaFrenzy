@@ -1,11 +1,15 @@
 var socket = io.connect("http://127.0.0.1:5000/")
 
 socket.on("connect", () => {
-  var data = {
-    username: "Bob",
-    room: socket.sessionId
-  };
-  socket.emit("join",data)
+
+})
+
+socket.on("message",(msg) => {
+  var functionList = document.getElementById("function-list")
+  var newFunction = document.createElement("p")
+  //newFunction.append(msg)
+  //functionList.appendChild(msg)
+  console.log(msg)
 })
 
 socket.on("function",(func) => {
@@ -15,11 +19,19 @@ socket.on("function",(func) => {
   functionList.appendChild(newFunction)
 })
 
+socket.on("check", (isCorrect, func) => {
+  if (isCorrect) {
+    window.alert("Correct!")
+  } else {
+    window.alert("Incorrect! The function should be: " + func)
+  }
+})
+
 var sendBtn = document.getElementById("send-function-btn")
 sendBtn.addEventListener("click",() => {
   var funcField = document.getElementById("function-field")
   var funcList = document.getElementById("function-list")
 
-  socket.emit("function", funcField.value)
+  socket.emit("join", funcField.value)
   funcField.value = ""
 })
