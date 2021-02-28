@@ -8,7 +8,7 @@ socket.on("message",(msg) => {
   var newFunction = document.createElement("p")
   newFunction.append(msg)
   //functionList.appendChild(msg)
-  print(msg)
+  console.log(msg)
 })
 
 socket.on("function",(func) => {
