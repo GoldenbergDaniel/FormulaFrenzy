@@ -1,4 +1,4 @@
-import React, { useState} from "react"
+import React from "react"
 import io from "socket.io-client"
 import "./css/index.css"
 import "./css/App.css"
@@ -11,46 +11,60 @@ import Multiplayer from "./components/Multiplayer"
 var endPoint = "http://localhost:5000"
 var socket = io.connect(`${endPoint}`)
 
-var App = () => {
-  var [window, setWindow] = useState("home")
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      window: "multiplayer"
+    }
+    this.homeClick = this.homeClick.bind(this)
+  }
 
-  if (window === "home") {
-    return (
-      <div id="app">
-        <Navbar/>
-      </div>
-    )
+  homeClick() {
+    this.setState({
+      window: "home" 
+    })
   }
-  else if (window === "gamemode-select") {
-    return (
-      <div id="app">
-        <Navbar/>
-      </div>
-    )
-  }
-  else if (window === "multiplayer-select") {
-    return (
-      <div id="app">
-        <Navbar/>
-        <MultiplayerSelect/>
-      </div>
-    )
-  }
-  else if (window === "multiplayer") {
-    return (
-      <div id="app">
-        <Navbar/>
-        <Multiplayer/>
-      </div>
-    )
-  }
-  else if (window === "singleplayer") {
-    return (
-      <div id="app">
-        <Navbar/>
-        <Singleplayer/>
-      </div>
-    )
+
+  render() {
+    if (this.state.window === "home") {
+      return (
+        <div id="app">
+          <Navbar home={this.homeClick}/>
+        </div>
+      )
+    }
+    else if (this.state.window  === "gamemode-select") {
+      return (
+        <div id="app">
+          <Navbar home={this.homeClick}/>
+        </div>
+      )
+    }
+    else if (this.state.window  === "multiplayer-select") {
+      return (
+        <div id="app">
+          <Navbar home={this.homeClick}/>
+          <MultiplayerSelect/>
+        </div>
+      )
+    }
+    else if (this.state.window  === "multiplayer") {
+      return (
+        <div id="app">
+          <Navbar home={this.homeClick}/>
+          <Multiplayer/>
+        </div>
+      )
+    }
+    else if (this.state.window  === "singleplayer") {
+      return (
+        <div id="app">
+          <Navbar home={this.homeClick}/>
+          <Singleplayer/>
+        </div>
+      )
+    }
   }
 }
 
