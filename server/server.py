@@ -16,9 +16,9 @@ functionGlobal = ["x", "*", 3, "+", 1]
 
 @socketio.on("connect")
 def handle_connection():
-    join_room(request.sid)
+    join_room(request.remote_addr)
     send("Welcome!")
-    # Each person is assigned to a room with only them inside it.
+    # Each person is assigned to a room with only them inremote_addre it.
 
 
 @socketio.on("question")
@@ -60,10 +60,10 @@ def check_user_function(func):
     print("Check: ", ''.join(map(str, func)))
     print("Function global: ", functionGlobal)
     boolResp = universalCheck(''.join(map(str, func)), functionGlobal, inputsGlobal)
-    emit("check", boolResp, ''.join(map(str, functionGlobal)), room=request.sid)
+    emit("check", boolResp, ''.join(map(str, functionGlobal)), room=request.remote_addr)
 
 
-# a dictionary of all rooms, containing an array of size 2 for each player's SID
+# a dictionary of all rooms, containing an array of size 2 for each player's remote_addr
 roomIndex = {}
 
 
@@ -72,38 +72,49 @@ def on_join(room):
     print("Someone is joining!")
     if room not in roomIndex:
         print("Room is null, creating a new one!")
-        roomIndex.update({room: [request.sid]})
-        User = "User: " + request.sid
+        roomIndex.update({room: [request.remote_addr]})
+        User = "User: " + request.remote_addr
         join_room(room)
         role = "maker"
-        emit("assignRole", role, room=request.sid)
+        emit("assignRole", role, room=request.remote_addr)
         print(User + " has entered the room: " + str(room) + " with " + str(roomIndex[room]) + " with role: " + role)
 
     elif len(roomIndex[room]) <= 2:
-        print("Attempting to join existing room with " + str(len(roomIndex[room])) + " person(s) inside.")
+        print("Attempting to join existing room with " + str(len(roomIndex[room])) + " person(s) inremote_addre.")
         peopleInRoom = (roomIndex[room])
-        peopleInRoom.append(request.sid)
+        peopleInRoom.append(request.remote_addr)
         print("Room is now keeping track of user(s) " + str(roomIndex[room]))
-        User = "User: " + request.sid
+        User = "User: " + request.remote_addr
         join_room(room)
-        print("After joining, the room has " + str(len(roomIndex[room])) + " person(s) inside.")
+        print("After joining, the room has " + str(len(roomIndex[room])) + " person(s) inremote_addre.")
         if len(roomIndex[room]) == 1:
             role = "maker"
         elif len(roomIndex[room]) == 2:
             role = "cracker"
         print(User + " has entered the room: " + str(room) + " with " + str(roomIndex[room]) + " with role: " + role)
-        emit("assignRole", role, room=request.sid)
+        emit("assignRole", role, room=request.remote_addr)
     else:
         print("Room is full!")
 
 
 @socketio.on("leave")
-def on_leave(data):
-    username = data["username"]
-    room = data ["room"]
-    leave_room(room)
-    send(username + " has left the room.", room=room)
-    print(username + " has left the room.", room=room)
+def on_leave():
+    room = None
+    print("Searching to see if User: " + request.remote_addr + " is in a game room...")
+    for currRoom in roomIndex:
+        if request.remote_addr in roomIndex[currRoom]:
+            room = currRoom
+
+    if room is not None:
+        print("Found them! Removing them from game room " + room)
+        leave_room(room)
+        print("User: " + request.remote_addr + " has left the room.")
+        send("User: " + request.remote_addr + " has left the room.", room=room)
+    else:
+        print("Couldn't find them in a game room!")
+
+
+
 
 @app.route("/")
 def index():

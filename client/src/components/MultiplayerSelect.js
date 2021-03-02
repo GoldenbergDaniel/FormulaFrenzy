@@ -6,7 +6,6 @@ var socket = io.connect("http://127.0.0.1:5000/")
 
 var clickHandler = (props) => {
   var inputBox = document.getElementById("id-field")
-  console.log(inputBox.value)
   socket.emit("join",inputBox.value)
   props.multiplayer()
 }
