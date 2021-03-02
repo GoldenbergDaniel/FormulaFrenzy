@@ -7,7 +7,7 @@ var socket = io.connect("http://127.0.0.1:5000/")
 var WebSocketHandler = () => {
 
   socket.on("message", (msg) => {
-    window.alert(msg)
+    console.log(msg)
   })
 
   socket.on("check", (isCorrect, func) => {
@@ -49,11 +49,6 @@ socket.on("makeTable",(inputs, outputs, func, functionP) => {
 
 })
 
-socket.on("message",(msg) => {
-  console.log(msg)
-})
-
-
 socket.on("check", (isCorrect, func) => {
   if (isCorrect) {
     window.alert("Correct!")
@@ -62,6 +57,7 @@ socket.on("check", (isCorrect, func) => {
     window.alert("Incorrect! The function should be: " + func)
   }
 })
+
   return null
 }
 

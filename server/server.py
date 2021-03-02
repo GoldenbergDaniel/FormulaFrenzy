@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
+from typing import List
 
 
 import sys
@@ -16,6 +17,7 @@ functionGlobal = ["x", "*", 3, "+", 1]
 @socketio.on("connect")
 def handle_connection():
     join_room(request.sid)
+    send("Welcome!")
     # Each person is assigned to a room with only them inside it.
 
 
@@ -68,32 +70,31 @@ roomIndex = {}
 @socketio.on("join")
 def on_join(room):
     print("Someone is joining!")
-    if roomIndex.get(room) == None:
+    if room not in roomIndex:
         print("Room is null, creating a new one!")
-        roomIndex[room] = list(request.sid)
+        roomIndex.update({room: [request.sid]})
         User = "User: " + request.sid
-        send(User + " has entered the room.", room=room)
         join_room(room)
         role = "maker"
         emit("assignRole", role, room=request.sid)
-        print(User + " has entered the room: " + str(len(roomIndex[room])) + " with role: " + role)
+        print(User + " has entered the room: " + str(room) + " with " + str(roomIndex[room]) + " with role: " + role)
 
     elif len(roomIndex[room]) <= 2:
-        print("Joining existing room with " + roomIndex[room])
-        roomSize = len(roomIndex[room])
-        roomIndex[room[roomSize]] = request.sid
+        print("Attempting to join existing room with " + str(len(roomIndex[room])) + " person(s) inside.")
+        peopleInRoom = (roomIndex[room])
+        peopleInRoom.append(request.sid)
+        print("Room is now keeping track of user(s) " + str(roomIndex[room]))
         User = "User: " + request.sid
-        send(User + " has entered the room.", room=room)
         join_room(room)
+        print("After joining, the room has " + str(len(roomIndex[room])) + " person(s) inside.")
         if len(roomIndex[room]) == 1:
             role = "maker"
-        else:
+        elif len(roomIndex[room]) == 2:
             role = "cracker"
+        print(User + " has entered the room: " + str(room) + " with " + str(roomIndex[room]) + " with role: " + role)
         emit("assignRole", role, room=request.sid)
-        print(User + " has entered the room: " + room + " with role: " + role)
     else:
         print("Room is full!")
-        send("Room is full!")
 
 
 @socketio.on("leave")
