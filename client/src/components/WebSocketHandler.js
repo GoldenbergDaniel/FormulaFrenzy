@@ -5,7 +5,7 @@ import Singleplayer from "./Singleplayer";
 var socket = io.connect("http://127.0.0.1:5000/")
 
 var WebSocketHandler = () => {
-
+/*
   socket.on("message", (msg) => {
     console.log(msg)
   })
@@ -57,7 +57,7 @@ socket.on("check", (isCorrect, func) => {
     window.alert("Incorrect! The function should be: " + func)
   }
 })
-
+*/
   return null
 }
 

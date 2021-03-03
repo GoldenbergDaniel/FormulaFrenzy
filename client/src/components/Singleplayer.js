@@ -19,7 +19,7 @@ var check = () => {
 
 var Singleplayer = () => {  
   return (
-    <body onLoad={socket.emit("question")}>
+    <body /*onLoad={socket.emit("question")}*/>
     <div id="singleplayer">
       <div id="input-box">
         <Stats mode="singleplayer"/>
